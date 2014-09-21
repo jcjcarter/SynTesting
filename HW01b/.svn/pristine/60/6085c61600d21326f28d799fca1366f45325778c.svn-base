@@ -1,0 +1,10 @@
+package shape;
+
+public class Circle extends AShape {
+
+	@Override
+	public void paint(int xLocation, int yLocation) {
+		
+	}
+
+}

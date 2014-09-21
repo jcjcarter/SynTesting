@@ -1,0 +1,6 @@
+package shape;
+
+public abstract class AShape {
+
+	public abstract void paint(int xLocation, int yLocation);
+}

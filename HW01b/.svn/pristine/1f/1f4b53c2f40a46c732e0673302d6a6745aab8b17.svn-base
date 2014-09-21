@@ -1,0 +1,11 @@
+package shape;
+
+public class Square extends AShape{
+
+	@Override
+	public void paint(int xLocation, int yLocation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

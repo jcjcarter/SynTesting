@@ -1,0 +1,113 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JTextField;
+
+import shape.Circle;
+
+import java.awt.*;
+
+public class ShapeBox extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private final JPanel panelNorthPlaced = new JPanel();
+	private final JPanel panelCenterPlaced = new JPanel(){
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private final Circle jjaf = new Circle();
+		public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			g.setColor(Color.RED);
+			g.fillOval(75,100,20,40);
+		}
+	};
+	private final JLabel lblLabelNorthJpanel = new JLabel("Run oh run");
+	private final JButton btnButtonNorthJPanel = new JButton("Click Here Soon");
+	private final JTextField textFieldNorthJPanel = new JTextField();
+	private final JPanel panelSouthPlaced = new JPanel();
+	private final JPanel panelWestPlaced = new JPanel();
+	private final JPanel panelEastPlaced = new JPanel();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					start();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public static void start(){
+		ShapeBox frame = new ShapeBox();
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ShapeBox() {
+		textFieldNorthJPanel.setColumns(10);
+		initGUI();
+	}
+	private void initGUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		contentPane.add(panelSouthPlaced, BorderLayout.SOUTH);
+		panelNorthPlaced.setBackground(Color.MAGENTA);
+		panelNorthPlaced.setForeground(Color.ORANGE);
+		
+		contentPane.add(panelNorthPlaced, BorderLayout.NORTH);
+		
+		panelNorthPlaced.add(textFieldNorthJPanel);
+		panelNorthPlaced.add(lblLabelNorthJpanel);
+		btnButtonNorthJPanel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnButtonNorthJPanel.setText("You have clicked");
+				lblLabelNorthJpanel.setText(textFieldNorthJPanel.getText());
+				System.out.println("Success in clicking.");
+			}
+		});
+		
+		panelNorthPlaced.add(btnButtonNorthJPanel);
+		panelCenterPlaced.setBackground(Color.LIGHT_GRAY);
+		panelCenterPlaced.setForeground(Color.BLUE);
+		
+		contentPane.add(panelCenterPlaced, BorderLayout.CENTER);
+		contentPane.add(panelWestPlaced, BorderLayout.WEST);
+		
+		contentPane.add(panelEastPlaced, BorderLayout.EAST);
+	}
+
+}
